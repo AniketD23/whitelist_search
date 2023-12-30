@@ -5,6 +5,12 @@
     <title>Search Links</title>
 </head>
 <body>
+    <!-- input websites to restrict -->
+    <form action="/add_search_url" method="post">
+        <input type="text" name="search_url" placeholder="Add another website">
+        <button type="submit">Add</button>
+    </form>
+
     <form action="/search" method="post">
         <input type="text" name="query" placeholder="Enter search query">
         <button type="submit">Search</button>
