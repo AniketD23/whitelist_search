@@ -6,10 +6,13 @@
 </head>
 <body>
     <h1>Search Results</h1>
+    {% for s_url in url_dict.keys() %}
+    {% set links = url_dict[s_url] %}
     <ul>
         {% for link in links %}
             <li><a href="{{ link }}">{{ link }}</a></li>
         {% endfor %}
     </ul>
+    {% endfor %}
 </body>
 </html>
