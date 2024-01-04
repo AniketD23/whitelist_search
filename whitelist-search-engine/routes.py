@@ -7,13 +7,13 @@ search_urls = {}
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', url_dict=search_urls)
 
 @app.route('/add_search_url', methods=['POST'])
 def add_search_url():
     if request.method == 'POST':
         search_urls[request.form['search_url']] = 0
-        return render_template('index.html')
+        return render_template('url_list.html', url_dict=search_urls)
 
 
 @app.route('/search', methods=['POST'])
