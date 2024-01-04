@@ -3,17 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Search Links</title>
+    <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- input websites to restrict -->
-    <form action="/add_search_url" method="post">
+    <form hx-post="/add_search_url" hx-target="#search_urls" hx-on::after-request=" if(event.detail.successful) this.reset()"> 
         <input type="text" name="search_url" placeholder="Add another website">
         <button type="submit">Add</button>
     </form>
 
-    <form action="/search" method="post">
+    <!-- input query -->
+    <form hx-post="/search" hx-target="#search_results" hx-on::after-request=" if(event.detail.successful) this.reset()">
         <input type="text" name="query" placeholder="Enter search query">
         <button type="submit">Search</button>
     </form>
+
+    <!-- Websites user has added -->
+    <h1>Websites</h1>
+    <ul id="search_urls">
+    </ul>
+
+    <!-- Results -->
+    <h1>Search Results</h1>
+    <div id="search_results">
+    </div>
 </body>
 </html>
