@@ -16,37 +16,41 @@
     <body>
         <!-- Bootstrap JS Bundle -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
-            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>               
-            <div class="row"> 
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+        <div class="container-fluid">
+            <div class="row mb-3">
                 <h1>Whitelist Search</h1>
             </div>
 
-            <div class="row">
-            <div class="col-3">
-                <!-- input websites to restrict -->
-                <form hx-post="/add_search_url" hx-target="#search_urls" hx-on::after-request=" if(event.detail.successful) this.reset()"> 
-                    <input type="text" name="search_url" placeholder="Add another website">
-                    <button type="submit">Add</button>
-                </form>
-                <!-- Websites user has added -->
-                <h3>Websites</h3>
-                <ul id="search_urls">
-                </ul>
+            <div class="row mb-3">
+                <div class="col-3">
+                    <!-- input websites to restrict -->
+                    <form class="mb-2" hx-post="/add_search_url" hx-target="#search_urls" hx-on::after-request=" if(event.detail.successful) this.reset()"> 
+                        <input type="text" name="search_url" placeholder="Add another website">
+                        <button type="submit">Add</button>
+                    </form>
+                    <!-- Websites user has added -->
+                    <h3>Websites</h3>
+                    <ul id="search_urls">
+                    </ul>
 
-            </div>
+                </div>
 
-            <div class="col">
-                <!-- input query -->
-                <form hx-post="/search" hx-target="#search_results" hx-on::after-request=" if(event.detail.successful) this.reset()">
-                    <input type="text" name="query" placeholder="Enter search query">
-                    <button type="submit">Search</button>
-                </form>
+                <div class="col">
+                    <!-- input query -->
+                    <form class="mb-2" hx-post="/search" hx-target="#search_results" hx-on::after-request=" if(event.detail.successful) this.reset()">
+                        <input type="text" name="query" placeholder="Enter search query">
+                        <button type="submit">Search</button>
+                    </form>
 
-                <!-- Results -->
-                <h3>Search Results</h3>
-                <div id="search_results">
+                    <!-- Results -->
+                    <h3>Search Results</h3>
+                    <div id="search_results">
+                    </div>
                 </div>
             </div>
         </div>
+
     </body>
 </html>
