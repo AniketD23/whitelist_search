@@ -1,31 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Search Links</title>
-    <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" crossorigin="anonymous"></script>
-</head>
-<body>
-    <!-- input websites to restrict -->
-    <form hx-post="/add_search_url" hx-target="#search_urls" hx-on::after-request=" if(event.detail.successful) this.reset()"> 
-        <input type="text" name="search_url" placeholder="Add another website">
-        <button type="submit">Add</button>
-    </form>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Search Links</title>
+        <!-- HTMX -->
+        <script src="https://unpkg.com/htmx.org@1.9.10" integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC" 
+            crossorigin="anonymous"></script>
+        <!-- Bootsrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
-    <!-- input query -->
-    <form hx-post="/search" hx-target="#search_results" hx-on::after-request=" if(event.detail.successful) this.reset()">
-        <input type="text" name="query" placeholder="Enter search query">
-        <button type="submit">Search</button>
-    </form>
+    </head>
 
-    <!-- Websites user has added -->
-    <h1>Websites</h1>
-    <ul id="search_urls">
-    </ul>
+    <body>
+        <!-- Bootstrap JS Bundle -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>               
+            <div class="row"> 
+                <h1>Whitelist Search</h1>
+            </div>
 
-    <!-- Results -->
-    <h1>Search Results</h1>
-    <div id="search_results">
-    </div>
-</body>
+            <div class="row">
+            <div class="col-3">
+                <!-- input websites to restrict -->
+                <form hx-post="/add_search_url" hx-target="#search_urls" hx-on::after-request=" if(event.detail.successful) this.reset()"> 
+                    <input type="text" name="search_url" placeholder="Add another website">
+                    <button type="submit">Add</button>
+                </form>
+                <!-- Websites user has added -->
+                <h3>Websites</h3>
+                <ul id="search_urls">
+                </ul>
+
+            </div>
+
+            <div class="col">
+                <!-- input query -->
+                <form hx-post="/search" hx-target="#search_results" hx-on::after-request=" if(event.detail.successful) this.reset()">
+                    <input type="text" name="query" placeholder="Enter search query">
+                    <button type="submit">Search</button>
+                </form>
+
+                <!-- Results -->
+                <h3>Search Results</h3>
+                <div id="search_results">
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
